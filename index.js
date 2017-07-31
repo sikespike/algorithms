@@ -1,12 +1,12 @@
 function buildResultsBody(body) {
-    var template = "<tr><td class='input'>{INPUT}</td><td class='output'>{OUTPUT}</td></tr>";
+    let template = "<tr><td class='input'>{INPUT}</td><td class='output'>{OUTPUT}</td></tr>";
 
-    var result = "";
+    let result = "";
 
-    for(var x=0;x<10;x++) {
-        var test = body.tests[x];
+    for(let x=0;x<10;x++) {
+        let test = body.tests[x];
 
-        var row = template.replace("{INPUT}", test.input).replace("{OUTPUT}", test.output);
+        let row = template.replace("{INPUT}", test.input).replace("{OUTPUT}", test.output);
 
         result += row;
     }
@@ -15,11 +15,11 @@ function buildResultsBody(body) {
 }
 
 function buildResultsTable(results) {
-    var table = "<table class='result-table'><tr><td>{HEADER}</td></tr><tr><td><table><tr><td>Input</td><td>Output</td></tr>{BODY}</table></td></tr></table>";
+    let table = "<table class='result-table'><tr><td>{HEADER}</td></tr><tr><td><table><tr><td>Input</td><td>Output</td></tr>{BODY}</table></td></tr></table>";
 
     table = table.replace("{HEADER}", results.header);
 
-    var body = buildResultsBody(results.body);
+    let body = buildResultsBody(results.body);
 
     table = table.replace("{BODY}", body);
 
@@ -27,89 +27,67 @@ function buildResultsTable(results) {
 }
 
 function buildResults(header, input, output) {
-    var result = {header:header, body:{tests:[{input:input, output:output}]}};
+    let result = {header:header, body:{tests:[{input:input, output:output}]}};
 
     return result;
 }
 
 function runSorts() {
-    var bubbleInputCopy = [1,1,8,4,9,2,3,6,2];
-    var bubbleInput = [1,1,8,4,9,2,3,6,2];
-    var bubbleOutput = bubbleSort(bubbleInput);
-    var bubbleResults = buildResults("Bubble Sort", bubbleInputCopy, bubbleOutput);
-    var bubbleTable = buildResultsTable(bubbleResults);
-    var $bubbleTableEl = $.parseHTML(bubbleTable);
+    let bubbleInputCopy = [1,1,8,4,9,2,3,6,2];
+    let bubbleInput = [1,1,8,4,9,2,3,6,2];
+    let bubbleOutput = bubbleSort(bubbleInput);
+    let bubbleResults = buildResults("Bubble Sort", bubbleInputCopy, bubbleOutput);
+    let bubbleTable = buildResultsTable(bubbleResults);
+    let $bubbleTableEl = $.parseHTML(bubbleTable);
 
     $("body").append($bubbleTableEl);
 
-    var quickInputCopy = [1,1,8,4,9,2,3,6,2];
-    var quickInput = [1,1,8,4,9,2,3,6,2];
-    var quickOutput = quickSort(quickInput);
-    var quickResults = buildResults("Quick Sort", quickInputCopy, quickOutput);
-    var quickTable = buildResultsTable(quickResults);
-    var $quickTableEl = $.parseHTML(quickTable);
+    let quickInputCopy = [1,1,8,4,9,2,3,6,2];
+    let quickInput = [1,1,8,4,9,2,3,6,2];
+    let quickOutput = quickSort(quickInput);
+    let quickResults = buildResults("Quick Sort", quickInputCopy, quickOutput);
+    let quickTable = buildResultsTable(quickResults);
+    let $quickTableEl = $.parseHTML(quickTable);
 
     $("body").append($quickTableEl);
 }
 
 function runLinearSearch(input, item) {
-    var linearSearchInput = input;
-    var linearSearchItem = item;
-    var linearSearchOutput = linearSearch(linearSearchInput,linearSearchItem);
-    var linearSearchResults = buildResults("Linear Search for "+item, linearSearchInput, linearSearchOutput);
-    var linearSearchTable = buildResultsTable(linearSearchResults);
-    var $linearSearchTableEl = $.parseHTML(linearSearchTable);
+    let linearSearchInput = input;
+    let linearSearchItem = item;
+    let linearSearchOutput = linearSearch(linearSearchInput,linearSearchItem);
+    let linearSearchResults = buildResults("Linear Search for "+item, linearSearchInput, linearSearchOutput);
+    let linearSearchTable = buildResultsTable(linearSearchResults);
+    let $linearSearchTableEl = $.parseHTML(linearSearchTable);
 
     return $linearSearchTableEl;
 }
 
 function runBinarySearchArray(input, item) {
-    var searchInput = input;
-    var searchItem = item;
-    var searchOutput = binarySearchArray(searchInput,searchItem);
-    var searchResults = buildResults("Binary Array Search for "+item, searchInput, searchOutput);
-    var searchTable = buildResultsTable(searchResults);
-    var $searchTableEl = $.parseHTML(searchTable);
+    let searchInput = input;
+    let searchItem = item;
+    let searchOutput = binarySearchArray(searchInput,searchItem);
+    let searchResults = buildResults("Binary Array Search for "+item, searchInput, searchOutput);
+    let searchTable = buildResultsTable(searchResults);
+    let $searchTableEl = $.parseHTML(searchTable);
 
     return $searchTableEl;
 }
 
 function runSearches() {
-    var $linearSearchOne = runLinearSearch([1,1,8,4,9,2,3,6,2], 9);
-
-    $("body").append($linearSearchOne);
-
-    var $linearSearchTwo = runLinearSearch([1,1,8,4,9,2,3,6,2], 6);
-
-    $("body").append($linearSearchTwo);
-
-    var $linearSearchThree = runLinearSearch([1,1,8,4,9,2,3,6,2], 2);
-
-    $("body").append($linearSearchThree);
-
-    var $linearSearchFour = runLinearSearch([1,1,8,4,9,2,3,6,2], 39);
-
-    $("body").append($linearSearchFour);
+    runLinearSearch([1,1,8,4,9,2,3,6,2], 9);
+    runLinearSearch([1,1,8,4,9,2,3,6,2], 6);
+    runLinearSearch([1,1,8,4,9,2,3,6,2], 2);
+    runLinearSearch([1,1,8,4,9,2,3,6,2], 39);
 
     //binarySearchArray
-    var $binaryArraySearchOne = runBinarySearchArray([1,1,8,4,9,2,3,6,2], 9);
-
-    $("body").append($binaryArraySearchOne);
-
-    var $binaryArraySearchOne = runBinarySearchArray([1,1,8,4,9,2,3,6,2], 6);
-
-    $("body").append($binaryArraySearchOne);
-
-    var $binaryArraySearchThree = runBinarySearchArray([1,1,8,4,9,2,3,6,2], 2);
-
-    $("body").append($binaryArraySearchThree);
-
-    var $binaryArraySearchFour = runBinarySearchArray([1,1,8,4,9,2,3,6,2], 39);
-
-    $("body").append($binaryArraySearchFour);
+    runBinarySearchArray([1,1,8,4,9,2,3,6,2], 9);
+    runBinarySearchArray([1,1,8,4,9,2,3,6,2], 6);
+    runBinarySearchArray([1,1,8,4,9,2,3,6,2], 2);
+    runBinarySearchArray([1,1,8,4,9,2,3,6,2], 39);
 }
 
-$(document).on("ready", function(){
-    runSorts();
-    runSearches();
-});
+runSorts();
+runSearches();
+
+
