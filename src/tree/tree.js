@@ -25,7 +25,7 @@ export default class Tree {
 
     buildTree(nodes) {
         nodes.forEach((node) => {
-            let nNode = new TreeNode(node, this.nodeLimit);
+            const nNode = new TreeNode(node, this.nodeLimit);
             if(!this.root) {
                 this.root = nNode;
             } else {

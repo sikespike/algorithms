@@ -1,0 +1,13 @@
+{
+  "extends": ["airbnb", "prettier"],
+  "env": { "browser": true, "es6": true, "node": true },
+  "rules": {
+    "no-shadow": [
+      "error"
+    ],
+    "no-plusplus":"warn",
+    "no-else-return" : "off",
+    "no-unused-expressions":"warn",
+    "no-param-reassign": "warn"
+  }
+}

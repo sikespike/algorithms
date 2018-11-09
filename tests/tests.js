@@ -1,9 +1,9 @@
 function solution(input) {
-    var outOfOrder = [];
+    const outOfOrder = [];
 
     for(var x=0;x<input.length-1; x++) {
-        var first = input[x];
-        var second = input[x+1];
+        const first = input[x];
+        const second = input[x+1];
 
         if(first > second) {
             outOfOrder[first] = true;
@@ -14,7 +14,7 @@ function solution(input) {
         }
     }
 
-    var result = 0;
+    let result = 0;
     for(var x=0;x<outOfOrder.length;x++) {
         if(outOfOrder[x] != null) {
             result++;
@@ -48,7 +48,7 @@ function populateList(list,node, depth){
 }
 
 function buildTreeFail(input) {
-    var list = [];
+    let list = [];
 
     list = populateList(list, input, 0);
 
@@ -57,7 +57,7 @@ function buildTreeFail(input) {
 
 
 function buildTree(input) {
-    var node = {};
+    const node = {};
 
     if(input == null || input.length == 0){
         return null;
@@ -81,15 +81,15 @@ function amp(node, depth) {
         return {max: -1, min:node.x};
     }
 
-    var val = node.x;
+    const val = node.x;
 
-    var left = amp(node.l, depth+1);
-    var right = amp(node.r, depth+1);
+    const left = amp(node.l, depth+1);
+    const right = amp(node.r, depth+1);
 
-    var leftMax = -1;
-    var leftMin = null;
-    var rightMax = -1;
-    var rightMin = null;
+    let leftMax = -1;
+    let leftMin = null;
+    let rightMax = -1;
+    let rightMin = null;
 
     if(left != null){
         leftMin = left.min;
@@ -103,14 +103,13 @@ function amp(node, depth) {
         rightMin = left != null ? left.min : 0;
     }
 
-    var max = null;
-    var min = null;
+    let max = null;
+    let min = null;
 
     if(depth != 0){
         max = Math.max(val, Math.max(leftMax, rightMax));
         min = Math.min(val, Math.min(leftMin, rightMin));
-    } else {
-        if(leftMax - leftMin > rightMax - rightMin){
+    } else if(leftMax - leftMin > rightMax - rightMin){
             if(val - leftMin > leftMax){
                 max = val;
                 min = leftMin;
@@ -118,28 +117,25 @@ function amp(node, depth) {
                 max = leftMax;
                 min = leftMin;
             }
-        } else {
-            if(val - rightMin > rightMax) {
+        } else if(val - rightMin > rightMax) {
                 max = val;
                 min = rightMin;
             } else {
                 max = rightMax;
                 min = rightMin;
             }
-        }
-    }
-    return {max:max,min:min};
+    return {max,min};
 }
 
 function amp2(list) {
-    var minNode = -1;
-    var amp = -1;
-    var minIndex = -1;
+    let minNode = -1;
+    const amp = -1;
+    let minIndex = -1;
 
-    var maxNode = -1;
-    var maxIndex = -1;
+    let maxNode = -1;
+    let maxIndex = -1;
 
-    for(var x=0;x<list.length;x++) {
+    for(let x=0;x<list.length;x++) {
         if(list[x] != null) {
             if(minNode == -1 || minNode > list[x]) {
                 minNode = list[x];
@@ -153,23 +149,23 @@ function amp2(list) {
         }
     }
 
-    var diff = maxNode - minNode;
+    const diff = maxNode - minNode;
 }
 
 function solution5(input) {
-    var tree = buildTree(input);
-    var result = amp(tree,0);
+    const tree = buildTree(input);
+    const result = amp(tree,0);
 
     return result.max - result.min;
 }
 
 function solution4(input) {
-    for(var x=input.length -1; x >=0;x--){
-        for(var y=input[x].length -1; y>=0;y--){
-            var point = input[x][y];
+    for(let x=input.length -1; x >=0;x--){
+        for(let y=input[x].length -1; y>=0;y--){
+            const point = input[x][y];
 
-            var total1 = 0;
-            var total2 = 0;
+            let total1 = 0;
+            let total2 = 0;
 
             if(x+1 <= input.length -1){
                 total1 = point+input[x+1][y];
@@ -188,13 +184,13 @@ function solution4(input) {
 
 
 function solution3(N) {
-    var number = Math.pow(11, N);
+    const number = Math.pow(11, N);
 
-    var numString = number.toString();
+    const numString = number.toString();
 
-    var result = 0;
+    let result = 0;
 
-    for(var x=0;x<numString.length;x++) {
+    for(let x=0;x<numString.length;x++) {
         if(numString[x] == "1"){
             result++;
         }
@@ -205,7 +201,7 @@ function solution3(N) {
 
 
 function solution2(input) {
-    var tempResult = [];
+    const tempResult = [];
 
     for(var x=0;x<input.length;x++) {
         var key = input[x];
@@ -217,20 +213,20 @@ function solution2(input) {
         }
     }
 
-    var result = 0;
-    var inputLength = input.length;
+    let result = 0;
+    let inputLength = input.length;
 
     for(var x=0; x < inputLength; x++) {
         var key = input[x];
 
         if(tempResult[key] != null) {
-            var subset = tempResult[key];
+            const subset = tempResult[key];
 
             if(subset.length > 1){
-                for(var i=0; i < subset.length;i++){
-                    for(var j= i+1;j<subset.length;j++){
-                        var index = Math.abs(subset[i] - subset[i+1]);
-                        var newKey = input[index];
+                for(let i=0; i < subset.length;i++){
+                    for(let j= i+1;j<subset.length;j++){
+                        const index = Math.abs(subset[i] - subset[i+1]);
+                        const newKey = input[index];
 
                         result = Math.max(result,newKey);
                     }
@@ -255,8 +251,8 @@ function solution2(input) {
 
 function solution1(S) {
     if(S !== null && S.trim().length > 0){
-        var result = [];
-        var tempResult = "";
+        const result = [];
+        let tempResult = "";
         for(var x= S.length -1;x >= 0;x--){
             if(S[x] == " "){
                 result.push(tempResult);
@@ -270,10 +266,10 @@ function solution1(S) {
             }
         }
 
-        var resultString = "";
+        let resultString = "";
 
         for(var x= result.length-1;x>=0;x--){
-            resultString += result[x]+ " ";
+            resultString += `${result[x] } `;
         }
 
         return resultString.trim();
@@ -283,13 +279,13 @@ function solution1(S) {
 }
 
 function test2() {
-    var result = solution( [1, 3, 5, 3, 4] );
+    const result = solution( [1, 3, 5, 3, 4] );
 
     $("body").html(result);
 }
 
 function test1() {
-    var result = solution([[2,2,4,2],[0,3,0,1],[1,2,2,1],[4,1,2,2]]);
+    const result = solution([[2,2,4,2],[0,3,0,1],[1,2,2,1],[4,1,2,2]]);
 
     $("body").html(result);
 }

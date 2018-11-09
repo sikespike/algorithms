@@ -2,9 +2,9 @@ import Tree from './tree';
 import { NodeConstants } from './tree-node';
 
 function makeBinaryTreeNode(value) {
-    let val = value ? value: null;
+    const val = value || null;
 
-    let node = {
+    const node = {
         parent: null,
         left: null,
         right: null,
@@ -17,10 +17,9 @@ function makeBinaryTreeNode(value) {
 function binaryTreeInsert(tree, item) {
     if(tree.value == null) {
         tree.value = item;
-    } else {
-        if(tree.value > item) {
+    } else if(tree.value > item) {
             if(tree.left == null) {
-                let node = makeBinaryTreeNode(item);
+                const node = makeBinaryTreeNode(item);
                 tree.left = node;
                 node.parent = tree;
             } else {
@@ -28,14 +27,13 @@ function binaryTreeInsert(tree, item) {
             }
         } else if(tree.value < item) {
             if(tree.right == null) {
-                let node = makeBinaryTreeNode(item);
+                const node = makeBinaryTreeNode(item);
                 tree.right = node;
                 node.parent = tree;
             } else {
                 tree = binaryTreeInsert(tree.right, item);
             }
         }
-    }
 
     return tree;
 }
@@ -49,7 +47,7 @@ export default class BinaryTree extends Tree {
         if(input == null) {
             return null;
         } else {
-            let tree = makeBinaryTreeNode(input[0]);
+            const tree = makeBinaryTreeNode(input[0]);
             tree.left = buildBinaryTree(input[1]);
             if(tree.left != null) {
                 tree.left.parent = tree;

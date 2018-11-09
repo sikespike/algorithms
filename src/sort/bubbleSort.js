@@ -1,5 +1,5 @@
 function bubbleSwap(input, one, two) {
-    var temp = input[one];
+    const temp = input[one];
 
     input[one] = input[two];
     input[two] = temp;
@@ -8,9 +8,9 @@ function bubbleSwap(input, one, two) {
 }
 
 function bubbleIteration(input, index) {
-    var item = input[index];
-    var firstIndex = -1;
-    for(var x=index+1;x<input.length;x++) {
+    const item = input[index];
+    let firstIndex = -1;
+    for(let x=index+1;x<input.length;x++) {
         if(item > input[x]) {
             if(firstIndex === -1) {
                 firstIndex = x - 1;
@@ -21,16 +21,16 @@ function bubbleIteration(input, index) {
         }
     }
 
-    return {first:firstIndex, input:input};
+    return {first:firstIndex, input};
 }
 
-//1,1,8,4,9,2,3,6,2
-//pass 3
-//1,1,4,9,2,3,6,2,8
-//1,1,
+// 1,1,8,4,9,2,3,6,2
+// pass 3
+// 1,1,4,9,2,3,6,2,8
+// 1,1,
 function bubbleSort(input) {
-    for(var x=0;x<input.length;x++) {
-        var pass = bubbleIteration(input, x);
+    for(let x=0;x<input.length;x++) {
+        const pass = bubbleIteration(input, x);
 
         if(pass.first !== -1) {
             x = pass.first - 1;

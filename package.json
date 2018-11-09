@@ -4,16 +4,36 @@
   "description": "algs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix ."
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sikespike/algorithms.git"
+    "url": "git+https://github.com/vkavoun/algorithms.js.git"
   },
   "author": "Vladimir Kavoun",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sikespike/algorithms/issues"
+    "url": "https://github.com/vkavoun/algorithms.js/issues"
   },
-  "homepage": "https://github.com/sikespike/algorithms#readme"
+  "homepage": "https://github.com/vkavoun/algorithms.js#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.5",
+    "@babel/preset-env": "^7.1.5",
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
+    "prettier": "^1.15.1",
+    "prettier-eslint": "^8.8.2",
+    "rollup": "^0.67.0",
+    "rollup-plugin-babel": "^4.0.3"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0"
+  }
 }

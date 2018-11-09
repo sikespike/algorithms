@@ -6,7 +6,7 @@ export { NodeConstants };
 
 export default class TreeNode {
     constructor(value, nodeLimit) {
-        this.value = value ? value : null;
+        this.value = value || null;
         this.parent = null;
         this.nodeLimit = nodeLimit && nodeLimit > 0 ? nodeLimit : NodeConstants.DEFAULT_CHILD ;
         this.nodes = [];
