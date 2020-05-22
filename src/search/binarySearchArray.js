@@ -1,8 +1,6 @@
-import 
+import { quickSort } from '../sort/quickSort';
 
-const binarySearchMidPoint = (left, right) => {
-  return Math.floor((right - left) / 2) + left;
-};
+const binarySearchMidPoint = (left, right) => Math.floor((right - left) / 2) + left;
 
 const recursiveBinarySearchArray = (input, item, left, right) => {
   if (right < left) {
@@ -28,8 +26,6 @@ const binarySearchArray = (input, item, sorted = false) => {
   return recursiveBinarySearchArray(input, item, 0, input.length - 1);
 };
 
-
 export default {
-  quickSort,
   binarySearchArray,
 };
